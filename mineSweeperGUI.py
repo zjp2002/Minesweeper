@@ -3,7 +3,8 @@ from PyQt5.QtCore import Qt, QTimer, QCoreApplication
 from PyQt5.QtGui import QPalette, QPixmap, QFont, QIcon
 from PyQt5.QtWidgets import QLineEdit, QInputDialog, QShortcut
 import superGUI, mineLabel, selfDefinedParameter, gameSettings, gameHelp
-import gameSetMoreGUI, gameAbout, gameTerms, browserGUI, gameScores
+import gameAbout, gameTerms, browserGUI, gameScores
+#import gameSetMoreGUI, gameAbout, gameTerms, browserGUI, gameScores
 import random, sip
 import minesweeper_master
 import statusLabel
@@ -161,7 +162,7 @@ class MineSweeperGUI(superGUI.Ui_MainWindow):
         self.actionzi_ding_yi.triggered.connect(self.action_CEvent)
         self.actiontui_chu.triggered.connect(QCoreApplication.instance().quit)
         self.actionyouxi_she_zhi.triggered.connect(self.action_NEvent)
-        self.actionqita_she_zhi.triggered.connect(self.action_QEvent)
+        #self.actionqita_she_zhi.triggered.connect(self.action_QEvent)
         self.actionxis.triggered.connect(self.action_HEvent)
         self.actiongaun_yv.triggered.connect(self.action_AEvent)
         self.actionrumjc.triggered.connect(self.action_JEvent)
@@ -728,6 +729,7 @@ class MineSweeperGUI(superGUI.Ui_MainWindow):
             self.gameStart()
             self.mainWindow.setWindowOpacity(self.transparency)
 
+    '''
     def action_QEvent(self):
         # 其他设置
         self.actionChecked('Q')
@@ -735,6 +737,7 @@ class MineSweeperGUI(superGUI.Ui_MainWindow):
         ui.Dialog.setModal(True)
         ui.Dialog.show()
         ui.Dialog.exec_()
+    '''
 
     def action_HEvent(self):
         # 词典，即游戏帮助、术语表

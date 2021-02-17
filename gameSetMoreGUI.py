@@ -1,3 +1,5 @@
+#内容已经全部注释，可以移除文件
+
 # -*- coding: utf-8 -*-
 
 # Form implementation generated from reading ui file 'ui_gs_more.ui'
@@ -9,6 +11,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 import configparser
 
+'''
 class Ui_Form(object):
     def __init__(self):
         config = configparser.ConfigParser()
@@ -191,3 +194,5 @@ class Ui_Form(object):
         conf.write(open('gameSetting.ini', "w"))
 
         self.Dialog.close ()
+
+'''

@@ -3,7 +3,7 @@ from PyQt5.QtCore import Qt, QTimer, QCoreApplication
 from PyQt5.QtGui import QPalette, QPixmap, QFont, QIcon
 from PyQt5.QtWidgets import QLineEdit, QInputDialog, QShortcut
 import superGUI, mineLabel, selfDefinedParameter, gameSettings, gameHelp
-import gameAbout, gameTerms, browserGUI, gameScores
+import gameRank, gameAbout, gameTerms, browserGUI, gameScores
 #import gameSetMoreGUI, gameAbout, gameTerms, browserGUI, gameScores
 import random, sip
 import minesweeper_master
@@ -164,6 +164,7 @@ class MineSweeperGUI(superGUI.Ui_MainWindow):
         self.actionzi_ding_yi.triggered.connect(self.action_CEvent)
         self.actiontui_chu.triggered.connect(QCoreApplication.instance().quit)
         self.actionyouxi_she_zhi.triggered.connect(self.action_NEvent)
+        self.actionbdzj.triggered.connect(self.action_QEvent)
         #self.actionqita_she_zhi.triggered.connect(self.action_QEvent)
         self.actionxis.triggered.connect(self.action_HEvent)
         self.actiongaun_yv.triggered.connect(self.action_AEvent)
@@ -373,8 +374,8 @@ class MineSweeperGUI(superGUI.Ui_MainWindow):
                             self.gameFailed()
                         if self.isGameFinished():
                             self.gameWin()
-                        if self.gameWinFlag:
-                            self.showScores()
+        if self.gameWinFlag:
+            self.showScores()
                             
     def mineAreaRightRelease(self, i, j):
         if not self.finish:
@@ -479,6 +480,8 @@ class MineSweeperGUI(superGUI.Ui_MainWindow):
                                             self.mineLabel[r][c].setPixmap(self.pixmapNum[11])
                                             self.mineLabel[r][c].status = 3
                             self.gameFailed()
+        if self.gameWinFlag:
+            self.showScores()
 
     def mineMouseMove(self, i, j):
         if not self.finish:
@@ -732,6 +735,13 @@ class MineSweeperGUI(superGUI.Ui_MainWindow):
             self.gameStart()
             self.mainWindow.setWindowOpacity(self.transparency)
 
+    def action_QEvent(self):
+        # 本地战绩
+        self.actionChecked('Q')
+        ui = gameRank.Ui_MainWindow()
+        ui.Dialog.setModal(True)
+        ui.Dialog.show()
+        ui.Dialog.exec_()
     '''
     def action_QEvent(self):
         # 其他设置

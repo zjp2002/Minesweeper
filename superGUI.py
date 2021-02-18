@@ -248,12 +248,14 @@ class Ui_MainWindow(object):
         font.setPointSize(12)
         self.actionyouxi_she_zhi.setFont(font)
         self.actionyouxi_she_zhi.setObjectName("actionyouxi_she_zhi")
+        '''
         self.actionqita_she_zhi = QtWidgets.QAction(MainWindow)
         font = QtGui.QFont()
         font.setFamily("微软雅黑")
         font.setPointSize(12)
         self.actionqita_she_zhi.setFont(font)
         self.actionqita_she_zhi.setObjectName("actionqita_she_zhi")
+        '''
         self.actiongaun_yv = QtWidgets.QAction(MainWindow)
         font = QtGui.QFont()
         font.setFamily("微软雅黑")

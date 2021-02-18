@@ -82,6 +82,7 @@ class MineSweeperGUI(superGUI.Ui_MainWindow):
                                 'min3BV': 2,
                                 'max3BV': 54,
                                  }
+            '''
             config["BROWSER"] = {'URL1':"http://saolei.wang/Main/Index.asp",
                                 'URL2':"http://www.minesweeper.info/worldranking.html",
                                 'URL3':"https://cn.bing.com/?mkt=zh-CN",
@@ -89,6 +90,7 @@ class MineSweeperGUI(superGUI.Ui_MainWindow):
                                 'gain2':1.0,
                                 'gain3':1.0,
                                  }
+            '''
             with open('gameSetting.ini', 'w') as configfile:
                 config.write(configfile)  # 将对象写入文件
 

@@ -373,6 +373,8 @@ class MineSweeperGUI(superGUI.Ui_MainWindow):
                             self.gameFailed()
                         if self.isGameFinished():
                             self.gameWin()
+                        if self.gameWinFlag:
+                            self.showScores()
                             
     def mineAreaRightRelease(self, i, j):
         if not self.finish:
@@ -599,7 +601,6 @@ class MineSweeperGUI(superGUI.Ui_MainWindow):
         self.label_2.setScaledContents(True)
         self.gameWinFlag = True
         self.gameFinished()
-        self.showScores()
 
     def gameFailed(self): # 失败后改脸和状态变量
         pixmap = QPixmap(self.pixmapNum[16])

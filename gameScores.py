@@ -401,7 +401,7 @@ class Ui_Form(object):
         self.pushButton_2.setShortcut(_translate("Form", "Space"))
         self.label_2.setText(_translate("Form", "竞速无猜 @ 高级"))'''
 from PyQt5 import QtCore, QtGui, QtWidgets
-
+import json
 class Ui_Form(object):
     def __init__(self, scores):
         self.scores = scores
@@ -561,7 +561,7 @@ class Ui_Form(object):
         self.horizontalLayout.addItem(spacerItem2)
 
         self.retranslateUi(Form)
-        self.pushButton.clicked.connect(Form.close)
+        self.pushButton.clicked.connect(self.saveScore)
         self.pushButton_2.clicked.connect(Form.close)
         QtCore.QMetaObject.connectSlotsByName(Form)
 
@@ -595,3 +595,14 @@ class Ui_Form(object):
         self.pushButton_2.setText(_translate("Form", "放弃"))
 
 
+    def saveScore(self):
+        temp_dict = {}
+        result = []
+        submit = 'scores.json'
+        temp_dict['Difficulty'] = self.scores['Difficulty']
+        temp_dict['Time'] = self.scores['Time']
+        temp_dict['3BV/s'] = self.scores['3BV/s']
+        result.append(temp_dict)
+
+        with open(submit, 'w') as f:
+            json.dump(result, f)

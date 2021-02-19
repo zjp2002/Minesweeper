@@ -892,7 +892,7 @@ def calBoardIndex(Board):
                     Num3BV += 1
     indexes['Ops'] = calOp(Board)
     indexes['3BV'] = Num3BV + indexes['Ops']
-    # indexes['Isls'] = '还在写'
+    indexes['Isls'] = '还在写'
     indexes['Difficulty'] = judgeDifficult()
     return indexes
 

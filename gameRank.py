@@ -425,13 +425,13 @@ class Ui_MainWindow(object):
                 if i >= 10:
                     break
                 tmpitem = QTableWidgetItem(str(i + 1))
-                tmpitem.setTextAlignment(QtCore.Qt.AlignHCenter)
+                tmpitem.setTextAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
                 self.tableWidget_1.setItem(i, 0, tmpitem)
                 tmpitem = QTableWidgetItem(listB[i]["name"])
-                tmpitem.setTextAlignment(QtCore.Qt.AlignHCenter)
+                tmpitem.setTextAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
                 self.tableWidget_1.setItem(i, 1, tmpitem)
                 tmpitem = QTableWidgetItem(listB[i]["time"])
-                tmpitem.setTextAlignment(QtCore.Qt.AlignHCenter)
+                tmpitem.setTextAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
                 self.tableWidget_1.setItem(i, 2, tmpitem)
         with open('rankI.json', mode='r', encoding='utf-8') as fp:
             listI = json.load(fp)
@@ -440,13 +440,13 @@ class Ui_MainWindow(object):
                 if i >= 10:
                     break
                 tmpitem = QTableWidgetItem(str(i + 1))
-                tmpitem.setTextAlignment(QtCore.Qt.AlignHCenter)
+                tmpitem.setTextAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
                 self.tableWidget_2.setItem(i, 0, tmpitem)
                 tmpitem = QTableWidgetItem(listI[i]["name"])
-                tmpitem.setTextAlignment(QtCore.Qt.AlignHCenter)
+                tmpitem.setTextAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
                 self.tableWidget_2.setItem(i, 1, tmpitem)
                 tmpitem = QTableWidgetItem(listI[i]["time"])
-                tmpitem.setTextAlignment(QtCore.Qt.AlignHCenter)
+                tmpitem.setTextAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
                 self.tableWidget_2.setItem(i, 2, tmpitem)
         with open('rankE.json', mode='r', encoding='utf-8') as fp:
             listE = json.load(fp)
@@ -455,13 +455,13 @@ class Ui_MainWindow(object):
                 if i >= 10:
                     break
                 tmpitem = QTableWidgetItem(str(i + 1))
-                tmpitem.setTextAlignment(QtCore.Qt.AlignHCenter)
+                tmpitem.setTextAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
                 self.tableWidget_3.setItem(i, 0, tmpitem)
                 tmpitem = QTableWidgetItem(listE[i]["name"])
-                tmpitem.setTextAlignment(QtCore.Qt.AlignHCenter)
+                tmpitem.setTextAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
                 self.tableWidget_3.setItem(i, 1, tmpitem)
                 tmpitem = QTableWidgetItem(listE[i]["time"])
-                tmpitem.setTextAlignment(QtCore.Qt.AlignHCenter)
+                tmpitem.setTextAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
                 self.tableWidget_3.setItem(i, 2, tmpitem)
         with open('rankC.json', mode='r', encoding='utf-8') as fp:
             listC = json.load(fp)
@@ -470,13 +470,13 @@ class Ui_MainWindow(object):
                 if i >= 10:
                     break
                 tmpitem = QTableWidgetItem(str(i + 1))
-                tmpitem.setTextAlignment(QtCore.Qt.AlignHCenter)
+                tmpitem.setTextAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
                 self.tableWidget_4.setItem(i, 0, tmpitem)
                 tmpitem = QTableWidgetItem(listC[i]["name"])
-                tmpitem.setTextAlignment(QtCore.Qt.AlignHCenter)
+                tmpitem.setTextAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
                 self.tableWidget_4.setItem(i, 1, tmpitem)
                 tmpitem = QTableWidgetItem(listC[i]["3bv/s"])
-                tmpitem.setTextAlignment(QtCore.Qt.AlignHCenter)
+                tmpitem.setTextAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
                 self.tableWidget_4.setItem(i, 2, tmpitem)
         '''
         test = [{"name": "自定义1", "time": "15.001", "3bv/s": "1.51"}, {"name": "自定义2", "time": "16.001", "3bv/s": "0.51"}, {"name": "自定义3", "time": "16.101", "3bv/s": "0.10"}]

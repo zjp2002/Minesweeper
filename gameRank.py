@@ -418,7 +418,7 @@ class Ui_MainWindow(object):
         self.tableWidget_2.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
         self.tableWidget_3.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
         self.tableWidget_4.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
-        with open('rankB.json', mode='r', encoding='utf-8') as fp:
+        with open('scoreB.json', mode='r', encoding='utf-8') as fp:
             listB = json.load(fp)
             lenB = len(listB)
             for i in list(range(lenB)):
@@ -433,7 +433,7 @@ class Ui_MainWindow(object):
                 tmpitem = QTableWidgetItem(listB[i]["time"])
                 tmpitem.setTextAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
                 self.tableWidget_1.setItem(i, 2, tmpitem)
-        with open('rankI.json', mode='r', encoding='utf-8') as fp:
+        with open('scoreI.json', mode='r', encoding='utf-8') as fp:
             listI = json.load(fp)
             lenI = len(listI)
             for i in list(range(lenI)):
@@ -448,7 +448,7 @@ class Ui_MainWindow(object):
                 tmpitem = QTableWidgetItem(listI[i]["time"])
                 tmpitem.setTextAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
                 self.tableWidget_2.setItem(i, 2, tmpitem)
-        with open('rankE.json', mode='r', encoding='utf-8') as fp:
+        with open('scoreE.json', mode='r', encoding='utf-8') as fp:
             listE = json.load(fp)
             lenE = len(listE)
             for i in list(range(lenE)):
@@ -463,7 +463,7 @@ class Ui_MainWindow(object):
                 tmpitem = QTableWidgetItem(listE[i]["time"])
                 tmpitem.setTextAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
                 self.tableWidget_3.setItem(i, 2, tmpitem)
-        with open('rankC.json', mode='r', encoding='utf-8') as fp:
+        with open('scoreC.json', mode='r', encoding='utf-8') as fp:
             listC = json.load(fp)
             lenC = len(listC)
             for i in list(range(lenC)):
@@ -478,9 +478,10 @@ class Ui_MainWindow(object):
                 tmpitem = QTableWidgetItem(listC[i]["3bv/s"])
                 tmpitem.setTextAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
                 self.tableWidget_4.setItem(i, 2, tmpitem)
+
         '''
         test = [{"name": "自定义1", "time": "15.001", "3bv/s": "1.51"}, {"name": "自定义2", "time": "16.001", "3bv/s": "0.51"}, {"name": "自定义3", "time": "16.101", "3bv/s": "0.10"}]
-        with open('rankC.json', 'w', encoding='utf-8') as fp:
+        with open('scoreC.json', 'w', encoding='utf-8') as fp:
             json.dump(test, fp, ensure_ascii=False)
         '''
 

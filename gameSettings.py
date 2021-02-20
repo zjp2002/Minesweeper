@@ -30,6 +30,9 @@ class Ui_Form(object):
         elif self.gameDifficult == 'E':
             self.min3BV = config.getint('EXPERT', 'min3BV')
             self.max3BV = config.getint('EXPERT', 'max3BV')
+        elif self.gameDifficult == 'C':
+            self.min3BV = config.getint('CUSTOM', 'min3BV')
+            self.max3BV = config.getint('CUSTOM', 'max3BV')
             
         
         self.alter = False
@@ -359,6 +362,9 @@ class Ui_Form(object):
         elif self.gameDifficult == 'E':
             conf.set("EXPERT", "min3BV", str(self.min3BV))
             conf.set("EXPERT", "max3BV", str(self.max3BV))
+        elif self.gameDifficult == 'C':
+            conf.set("CUSTOM", "min3BV", str(self.min3BV))
+            conf.set("CUSTOM", "max3BV", str(self.max3BV))
         conf.write(open('gameSetting.ini', "w"))
             
         self.Dialog.close ()

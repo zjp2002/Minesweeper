@@ -45,6 +45,12 @@ class MineSweeperGUI(superGUI.Ui_MainWindow):
                 self.mineNum = 99
                 self.min3BV = config.getint('EXPERT', 'min3BV')
                 self.max3BV = config.getint('EXPERT', 'max3BV')
+            elif config['DEFAULT']['gameDifficult'] == 'C':
+                self.row = config.getint('CUSTOM', 'x')
+                self.column = config.getint('CUSTOM', 'y')
+                self.mineNum = config.getint('CUSTOM', 'n')
+                self.min3BV = config.getint('CUSTOM', 'min3BV')
+                self.max3BV = config.getint('CUSTOM', 'max3BV')
         else:
             # 找不到配置文件就初始化
             self.min3BV = 2
@@ -79,6 +85,7 @@ class MineSweeperGUI(superGUI.Ui_MainWindow):
                                  }
             config["CUSTOM"] = {'x':8,
                                 'y':8,
+                                'n':10,
                                 'min3BV': 2,
                                 'max3BV': 54,
                                  }
@@ -176,8 +183,10 @@ class MineSweeperGUI(superGUI.Ui_MainWindow):
             self.actionChecked('B')
         elif config['DEFAULT']['gameDifficult'] == 'I':
             self.actionChecked('I')
-        else:
+        elif config['DEFAULT']['gameDifficult'] == 'E':
             self.actionChecked('E')
+        else:
+            self.actionChecked('C')
 
         self.frameShortcut1.activated.connect(self.action_BEvent)
         self.frameShortcut2.activated.connect(self.action_IEvent)
@@ -657,7 +666,12 @@ class MineSweeperGUI(superGUI.Ui_MainWindow):
 
     def action_BEvent(self):
         self.actionChecked('B')
-        if self.row != 8 or self.column != 8 or self.mineNum != 10:
+        conf = configparser.ConfigParser()
+        conf.read('gameSetting.ini')
+        if conf['DEFAULT']['gameDifficult'] == 'B':
+            self.gameRestart()
+        else:
+        #if self.row != 8 or self.column != 8 or self.mineNum != 10:
             self.row = 8
             self.column = 8
             self.mineNum = 10
@@ -668,12 +682,17 @@ class MineSweeperGUI(superGUI.Ui_MainWindow):
             self.max3BV = conf.getint('BEGINNER', 'max3BV')
             conf.write(open('gameSetting.ini', "w"))
             self.gameStart()
-        else:
-            self.gameRestart()
+        #else:
+        #    self.gameRestart()
 
     def action_IEvent(self):
         self.actionChecked('I')
-        if self.row != 16 or self.column != 16 or self.mineNum != 40:
+        conf = configparser.ConfigParser()
+        conf.read('gameSetting.ini')
+        if conf['DEFAULT']['gameDifficult'] == 'I':
+            self.gameRestart()
+        else:
+        #if self.row != 16 or self.column != 16 or self.mineNum != 40:
             self.row = 16
             self.column = 16
             self.mineNum = 40
@@ -684,12 +703,17 @@ class MineSweeperGUI(superGUI.Ui_MainWindow):
             self.max3BV = conf.getint('INTERMEDIATE', 'max3BV')
             conf.write(open('gameSetting.ini', "w"))
             self.gameStart()
-        else:
-            self.gameRestart()
+        #else:
+        #    self.gameRestart()
 
     def action_Event(self):
         self.actionChecked('E')
-        if self.row != 16 or self.column != 30 or self.mineNum != 99:
+        conf = configparser.ConfigParser()
+        conf.read('gameSetting.ini')
+        if conf['DEFAULT']['gameDifficult'] == 'E':
+            self.gameRestart()
+        else:
+        #if self.row != 16 or self.column != 30 or self.mineNum != 99:
             self.row = 16
             self.column = 30
             self.mineNum = 99
@@ -700,8 +724,8 @@ class MineSweeperGUI(superGUI.Ui_MainWindow):
             self.max3BV = conf.getint('EXPERT', 'max3BV')
             conf.write(open('gameSetting.ini', "w"))
             self.gameStart()
-        else:
-            self.gameRestart()
+        #else:
+        #    self.gameRestart()
 
     def action_CEvent(self):
         # 点击菜单栏的自定义后回调
@@ -715,6 +739,17 @@ class MineSweeperGUI(superGUI.Ui_MainWindow):
             self.row = ui.row
             self.column = ui.column
             self.mineNum = ui.mineNum
+            self.min3BV = 2
+            self.max3BV = 500
+            conf = configparser.ConfigParser()
+            conf.read("gameSetting.ini")
+            conf.set("DEFAULT", "gamedifficult", 'C')
+            conf.set("CUSTOM", "x", str(self.row))
+            conf.set("CUSTOM", "y", str(self.column))
+            conf.set("CUSTOM", "n", str(self.mineNum))
+            conf.set("CUSTOM", "min3BV", str(self.min3BV))
+            conf.set("CUSTOM", "max3BV", str(self.max3BV))
+            conf.write(open('gameSetting.ini', "w"))
             self.gameStart()
 
     def action_NEvent(self):

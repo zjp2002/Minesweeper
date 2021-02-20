@@ -529,6 +529,7 @@ class Ui_Form(object):
         font.setFamily("幼圆")
         font.setPointSize(16)
         self.lineEdit.setFont(font)
+        self.lineEdit.setMaxLength(8)
         self.lineEdit.setObjectName("lineEdit")
         self.horizontalLayoutWidget = QtWidgets.QWidget(Form)
         self.horizontalLayoutWidget.setGeometry(QtCore.QRect(19, 359, 461, 81))

@@ -7,11 +7,15 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtWidgets import QTableWidgetItem
+import json
+
 
 class Ui_MainWindow(object):
     def __init__(self):
         self.Dialog = QtWidgets.QDialog()
         self.setupUi(self.Dialog)
+        self.loadRank()
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(366, 419)
@@ -408,4 +412,76 @@ class Ui_MainWindow(object):
         self.tableWidget_4.setSortingEnabled(False)
         self.tableWidget_4.setSortingEnabled(__sortingEnabled)
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_4), _translate("MainWindow", "自定义"))
+
+    def loadRank(self):
+        self.tableWidget_1.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
+        self.tableWidget_2.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
+        self.tableWidget_3.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
+        self.tableWidget_4.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
+        with open('rankB.json', mode='r', encoding='utf-8') as fp:
+            listB = json.load(fp)
+            lenB = len(listB)
+            for i in list(range(lenB)):
+                if i >= 10:
+                    break
+                tmpitem = QTableWidgetItem(str(i + 1))
+                tmpitem.setTextAlignment(QtCore.Qt.AlignHCenter)
+                self.tableWidget_1.setItem(i, 0, tmpitem)
+                tmpitem = QTableWidgetItem(listB[i]["name"])
+                tmpitem.setTextAlignment(QtCore.Qt.AlignHCenter)
+                self.tableWidget_1.setItem(i, 1, tmpitem)
+                tmpitem = QTableWidgetItem(listB[i]["time"])
+                tmpitem.setTextAlignment(QtCore.Qt.AlignHCenter)
+                self.tableWidget_1.setItem(i, 2, tmpitem)
+        with open('rankI.json', mode='r', encoding='utf-8') as fp:
+            listI = json.load(fp)
+            lenI = len(listI)
+            for i in list(range(lenI)):
+                if i >= 10:
+                    break
+                tmpitem = QTableWidgetItem(str(i + 1))
+                tmpitem.setTextAlignment(QtCore.Qt.AlignHCenter)
+                self.tableWidget_2.setItem(i, 0, tmpitem)
+                tmpitem = QTableWidgetItem(listI[i]["name"])
+                tmpitem.setTextAlignment(QtCore.Qt.AlignHCenter)
+                self.tableWidget_2.setItem(i, 1, tmpitem)
+                tmpitem = QTableWidgetItem(listI[i]["time"])
+                tmpitem.setTextAlignment(QtCore.Qt.AlignHCenter)
+                self.tableWidget_2.setItem(i, 2, tmpitem)
+        with open('rankE.json', mode='r', encoding='utf-8') as fp:
+            listE = json.load(fp)
+            lenE = len(listE)
+            for i in list(range(lenE)):
+                if i >= 10:
+                    break
+                tmpitem = QTableWidgetItem(str(i + 1))
+                tmpitem.setTextAlignment(QtCore.Qt.AlignHCenter)
+                self.tableWidget_3.setItem(i, 0, tmpitem)
+                tmpitem = QTableWidgetItem(listE[i]["name"])
+                tmpitem.setTextAlignment(QtCore.Qt.AlignHCenter)
+                self.tableWidget_3.setItem(i, 1, tmpitem)
+                tmpitem = QTableWidgetItem(listE[i]["time"])
+                tmpitem.setTextAlignment(QtCore.Qt.AlignHCenter)
+                self.tableWidget_3.setItem(i, 2, tmpitem)
+        with open('rankC.json', mode='r', encoding='utf-8') as fp:
+            listC = json.load(fp)
+            lenC = len(listC)
+            for i in list(range(lenC)):
+                if i >= 10:
+                    break
+                tmpitem = QTableWidgetItem(str(i + 1))
+                tmpitem.setTextAlignment(QtCore.Qt.AlignHCenter)
+                self.tableWidget_4.setItem(i, 0, tmpitem)
+                tmpitem = QTableWidgetItem(listC[i]["name"])
+                tmpitem.setTextAlignment(QtCore.Qt.AlignHCenter)
+                self.tableWidget_4.setItem(i, 1, tmpitem)
+                tmpitem = QTableWidgetItem(listC[i]["3bv/s"])
+                tmpitem.setTextAlignment(QtCore.Qt.AlignHCenter)
+                self.tableWidget_4.setItem(i, 2, tmpitem)
+        '''
+        test = [{"name": "自定义1", "time": "15.001", "3bv/s": "1.51"}, {"name": "自定义2", "time": "16.001", "3bv/s": "0.51"}, {"name": "自定义3", "time": "16.101", "3bv/s": "0.10"}]
+        with open('rankC.json', 'w', encoding='utf-8') as fp:
+            json.dump(test, fp, ensure_ascii=False)
+        '''
+
 

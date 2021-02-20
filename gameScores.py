@@ -529,7 +529,6 @@ class Ui_Form(object):
         font.setFamily("幼圆")
         font.setPointSize(16)
         self.lineEdit.setFont(font)
-        self.lineEdit.setMaxLength(8)
         self.lineEdit.setObjectName("lineEdit")
         self.horizontalLayoutWidget = QtWidgets.QWidget(Form)
         self.horizontalLayoutWidget.setGeometry(QtCore.QRect(19, 359, 461, 81))
@@ -562,7 +561,8 @@ class Ui_Form(object):
         self.horizontalLayout.addItem(spacerItem2)
 
         self.retranslateUi(Form)
-        self.pushButton.clicked.connect(self.saveScore)
+        self.pushButton.clicked.connect(self.saveScores)
+        self.pushButton.clicked.connect(Form.close)
         self.pushButton_2.clicked.connect(Form.close)
         QtCore.QMetaObject.connectSlotsByName(Form)
 
@@ -595,15 +595,56 @@ class Ui_Form(object):
         self.pushButton.setText(_translate("Form", "保存"))
         self.pushButton_2.setText(_translate("Form", "放弃"))
 
+    def saveScores(self):
+        if self.scores['Difficulty'] == '初级':
+            self.saveScoreB()
+        elif self.scores['Difficulty'] == '中级':
+            self.saveScoreI()
+        elif self.scores['Difficulty'] == '高级':
+            self.saveScoreE()
+        elif self.scores['Difficulty'] == '自定义':
+            self.saveScoreC()
 
-    def saveScore(self):
+    def saveScoreB(self):
         temp_dict = {}
-        result = []
-        submit = 'scores.json'
-        temp_dict['Difficulty'] = self.scores['Difficulty']
-        temp_dict['Time'] = self.scores['Time']
-        temp_dict['3BV/s'] = self.scores['3BV/s']
-        result.append(temp_dict)
+        with open('scoreB.json', mode='r', encoding='utf-8') as fp:
+            data = json.load(fp)
+        with open('scoreB.json', mode='w', encoding='utf-8') as fp:
+            temp_dict['name'] = self.lineEdit.text()
+            temp_dict['Time'] = self.scores['Time']
+            temp_dict['3BV/s'] = self.scores['3BV/s']
+            data.append(temp_dict)
+            json.dump(data, fp)
 
-        with open(submit, 'w') as f:
-            json.dump(result, f)
+    def saveScoreI(self):
+        temp_dict = {}
+        with open('scoreI.json', mode='r', encoding='utf-8') as fp:
+            data = json.load(fp)
+        with open('scoreI.json', mode='w', encoding='utf-8') as fp:
+            temp_dict['name'] = self.lineEdit.text()
+            temp_dict['Time'] = self.scores['Time']
+            temp_dict['3BV/s'] = self.scores['3BV/s']
+            data.append(temp_dict)
+            json.dump(data, fp)
+
+    def saveScoreE(self):
+        temp_dict = {}
+        with open('scoreE.json', mode='r', encoding='utf-8') as fp:
+            data = json.load(fp)
+        with open('scoreE.json', mode='w', encoding='utf-8') as fp:
+            temp_dict['name'] = self.lineEdit.text()
+            temp_dict['Time'] = self.scores['Time']
+            temp_dict['3BV/s'] = self.scores['3BV/s']
+            data.append(temp_dict)
+            json.dump(data, fp)
+
+    def saveScoreC(self):
+        temp_dict = {}
+        with open('scoreC.json', mode='r', encoding='utf-8') as fp:
+            data = json.load(fp)
+        with open('scoreC.json', mode='w', encoding='utf-8') as fp:
+            temp_dict['name'] = self.lineEdit.text()
+            temp_dict['Time'] = self.scores['Time']
+            temp_dict['3BV/s'] = self.scores['3BV/s']
+            data.append(temp_dict)
+            json.dump(data, fp)

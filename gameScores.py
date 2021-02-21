@@ -530,6 +530,7 @@ class Ui_Form(object):
         font.setPointSize(16)
         self.lineEdit.setFont(font)
         self.lineEdit.setObjectName("lineEdit")
+        self.lineEdit.setMaxLength(8) 
         self.horizontalLayoutWidget = QtWidgets.QWidget(Form)
         self.horizontalLayoutWidget.setGeometry(QtCore.QRect(19, 359, 461, 81))
         self.horizontalLayoutWidget.setObjectName("horizontalLayoutWidget")

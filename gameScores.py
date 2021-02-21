@@ -530,6 +530,7 @@ class Ui_Form(object):
         font.setPointSize(16)
         self.lineEdit.setFont(font)
         self.lineEdit.setObjectName("lineEdit")
+        self.lineEdit.setMaxLength(8)
         self.lineEdit.setMaxLength(8) 
         self.horizontalLayoutWidget = QtWidgets.QWidget(Form)
         self.horizontalLayoutWidget.setGeometry(QtCore.QRect(19, 359, 461, 81))
@@ -607,6 +608,7 @@ class Ui_Form(object):
             self.saveScoreC()
 
     def saveScoreB(self):
+        '''
         temp_dict = {}
         with open('scoreB.json', mode='r', encoding='utf-8') as fp:
             data = json.load(fp)
@@ -617,35 +619,103 @@ class Ui_Form(object):
             data.append(temp_dict)
             json.dump(data, fp)
 
+        '''
+        temp_dict = {}
+        temp_dict['name'] = self.lineEdit.text()
+        temp_dict['time'] = self.scores['time']
+        temp_dict['3bv/s'] = self.scores['3bv/s']
+        list=[]
+        with open('scoreB.json', mode='r', encoding='utf-8') as fp:
+            list = json.load(fp)
+        if list == []:
+            list.append(temp_dict)
+        else:
+            flag=0
+            flag1=True
+            for  data in  list:
+                if(temp_dict['time']>=data['time']):
+                    flag+=1
+                else:
+                    list.insert(flag,temp_dict)
+                    flag1=False
+                    break
+            if flag1 and flag<=9:
+                list.append(temp_dict)
+        with open('scoreB.json', mode='w', encoding='utf-8') as fp:
+            json.dump(list, fp)
+
+
     def saveScoreI(self):
         temp_dict = {}
+        temp_dict['name'] = self.lineEdit.text()
+        temp_dict['time'] = self.scores['time']
+        temp_dict['3bv/s'] = self.scores['3bv/s']
+        list = []
         with open('scoreI.json', mode='r', encoding='utf-8') as fp:
-            data = json.load(fp)
+            list = json.load(fp)
+        if list == []:
+            list.append(temp_dict)
+        else:
+            flag = 0
+            flag1 = True
+            for data in list:
+                if temp_dict['time'] >= data['time']:
+                    flag += 1
+                else:
+                    list.insert(flag, temp_dict)
+                    flag1 = False
+                    break
+            if flag1 and flag <= 9:
+                list.append(temp_dict)
         with open('scoreI.json', mode='w', encoding='utf-8') as fp:
-            temp_dict['name'] = self.lineEdit.text()
-            temp_dict['Time'] = self.scores['Time']
-            temp_dict['3BV/s'] = self.scores['3BV/s']
-            data.append(temp_dict)
-            json.dump(data, fp)
+            json.dump(list, fp)
 
     def saveScoreE(self):
         temp_dict = {}
-        with open('scoreE.json', mode='r', encoding='utf-8') as fp:
-            data = json.load(fp)
-        with open('scoreE.json', mode='w', encoding='utf-8') as fp:
-            temp_dict['name'] = self.lineEdit.text()
-            temp_dict['Time'] = self.scores['Time']
-            temp_dict['3BV/s'] = self.scores['3BV/s']
-            data.append(temp_dict)
-            json.dump(data, fp)
+        temp_dict['name'] = self.lineEdit.text()
+        temp_dict['time'] = self.scores['time']
+        temp_dict['3bv/s'] = self.scores['3bv/s']
+        list = []
+        with open('scoreB.json', mode='r', encoding='utf-8') as fp:
+            list = json.load(fp)
+        if list == []:
+            list.append(temp_dict)
+        else:
+            flag = 0
+            flag1 = True
+            for data in list:
+                if temp_dict['time'] >= data['time']:
+                    flag += 1
+                else:
+                    list.insert(flag, temp_dict)
+                    flag1 = False
+                    break
+            if flag1 and flag <= 9:
+                list.append(temp_dict)
+        with open('scoreB.json', mode='w', encoding='utf-8') as fp:
+            json.dump(list, fp)
 
     def saveScoreC(self):
         temp_dict = {}
-        with open('scoreC.json', mode='r', encoding='utf-8') as fp:
-            data = json.load(fp)
+        temp_dict['name'] = self.lineEdit.text()
+        temp_dict['time'] = self.scores['time']
+        temp_dict['3bv/s'] = self.scores['3bv/s']
+        list = []
+        with open('scoreB.json', mode='r', encoding='utf-8') as fp:
+            list = json.load(fp)
+        if list == []:
+            list.append(temp_dict)
+        else:
+            flag = 0
+            flag1 = True
+            for data in list:
+                if temp_dict['3bv/s'] <= data['3bv/s']:
+                    flag += 1
+                else:
+                    list.insert(flag, temp_dict)
+                    flag1 = False
+                    break
+            if flag1 and flag <= 9:
+                list.append(temp_dict)
         with open('scoreC.json', mode='w', encoding='utf-8') as fp:
-            temp_dict['name'] = self.lineEdit.text()
-            temp_dict['Time'] = self.scores['Time']
-            temp_dict['3BV/s'] = self.scores['3BV/s']
-            data.append(temp_dict)
-            json.dump(data, fp)
+            json.dump(list, fp)

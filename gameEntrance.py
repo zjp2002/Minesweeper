@@ -23,12 +23,12 @@ class Ui_Form(object):
         self.label = QtWidgets.QLabel(Form)
         self.label.setGeometry(QtCore.QRect(0, 0, 571, 581))
         self.label.setText("")
-        self.label.setPixmap(QtGui.QPixmap("blue.jpg"))
+        self.label.setPixmap(QtGui.QPixmap("media/blue.jpg"))
         self.label.setObjectName("label")
         self.label_2 = QtWidgets.QLabel(Form)
         self.label_2.setGeometry(QtCore.QRect(110, 0, 371, 121))
         self.label_2.setText("")
-        self.label_2.setPixmap(QtGui.QPixmap("minesweeper.png"))
+        self.label_2.setPixmap(QtGui.QPixmap("media/minesweeper.png"))
         self.label_2.setObjectName("label_2")
         self.horizontalLayoutWidget_3 = QtWidgets.QWidget(Form)
         self.horizontalLayoutWidget_3.setGeometry(QtCore.QRect(100, 350, 361, 71))
@@ -123,14 +123,14 @@ class Ui_Form(object):
 
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
-        Form.setWindowTitle(_translate("Form", "Form"))
+        Form.setWindowTitle(_translate("Form", "扫雷"))
         self.pushButton_1.setText(_translate("Form", "    高级    "))
         self.pushButton_2.setText(_translate("Form", "    中级    "))
         self.pushButton_3.setText(_translate("Form", "    初级    "))
         self.pushButton_4.setText(_translate("Form", "   排行榜   "))
 
     def openRank(self):
-        ui = gameRank.Ui_Form()
+        ui = gameRank.Ui_MainWindow()
         ui.Dialog.setModal(True)
         ui.Dialog.show()
         ui.Dialog.exec_()

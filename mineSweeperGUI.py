@@ -381,7 +381,7 @@ class MineSweeperGUI(superGUI.Ui_MainWindow):
                         else:
                             self.mineLabel[i][j].status = 3
                             self.gameFailed()
-                        if self.isGameFinished():
+                        if self.isGameFinished() and not failflag:
                             self.gameWin()
         if self.gameWinFlag:
             self.showScores()

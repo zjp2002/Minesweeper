@@ -6,9 +6,10 @@
 #
 # WARNING! All changes made in this file will be lost!
 
-
 from PyQt5 import QtCore, QtGui, QtWidgets
 import json
+import gameRank
+
 class Ui_Form(object):
     def __init__(self, scores):
         self.scores = scores
@@ -28,7 +29,7 @@ class Ui_Form(object):
         Form.setMaximumSize(QtCore.QSize(503, 450))
         Form.setMouseTracking(True)
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("cat.ico"),
+        icon.addPixmap(QtGui.QPixmap("media/cat.ico"),
                        QtGui.QIcon.Normal, QtGui.QIcon.Off)
         Form.setWindowIcon(icon)
         Form.setWindowOpacity(1.0)
@@ -136,9 +137,8 @@ class Ui_Form(object):
         font.setFamily("幼圆")
         font.setPointSize(16)
         self.lineEdit.setFont(font)
-        self.lineEdit.setObjectName("lineEdit")
         self.lineEdit.setMaxLength(8)
-        self.lineEdit.setMaxLength(8) 
+        self.lineEdit.setObjectName("lineEdit")
         self.horizontalLayoutWidget = QtWidgets.QWidget(Form)
         self.horizontalLayoutWidget.setGeometry(QtCore.QRect(19, 359, 461, 81))
         self.horizontalLayoutWidget.setObjectName("horizontalLayoutWidget")
@@ -171,7 +171,6 @@ class Ui_Form(object):
 
         self.retranslateUi(Form)
         self.pushButton.clicked.connect(self.saveScores)
-        self.pushButton.clicked.connect(Form.close)
         self.pushButton_2.clicked.connect(Form.close)
         QtCore.QMetaObject.connectSlotsByName(Form)
 
@@ -207,12 +206,18 @@ class Ui_Form(object):
     def saveScores(self):
         if self.scores['Difficulty'] == '初级':
             self.saveScoreB()
+            flag = 0
         elif self.scores['Difficulty'] == '中级':
             self.saveScoreI()
+            flag = 1
         elif self.scores['Difficulty'] == '高级':
             self.saveScoreE()
+            flag = 2
         elif self.scores['Difficulty'] == '自定义':
             self.saveScoreC()
+            flag = 3
+        self.Dialog.close()
+        self.action_QEvent(flag)
 
     def saveScoreB(self):
         '''
@@ -229,25 +234,27 @@ class Ui_Form(object):
         '''
         temp_dict = {}
         temp_dict['name'] = self.lineEdit.text()
-        temp_dict['time'] = self.scores['time']
-        temp_dict['3bv/s'] = self.scores['3bv/s']
+        temp_dict['time'] = self.scores['Time']
+        temp_dict['3bv/s'] = self.scores['3BV/s']
         list=[]
         with open('scoreB.json', mode='r', encoding='utf-8') as fp:
             list = json.load(fp)
         if list == []:
             list.append(temp_dict)
         else:
-            flag=0
-            flag1=True
-            for  data in  list:
-                if(temp_dict['time']>=data['time']):
-                    flag+=1
+            flag = 0
+            flag1 = True
+            for data in list:
+                if temp_dict['time'] >= data['time']:
+                    flag += 1
                 else:
-                    list.insert(flag,temp_dict)
-                    flag1=False
+                    list.insert(flag, temp_dict)
+                    flag1 = False
                     break
-            if flag1 and flag<=9:
+            if flag1 and flag <= 9:
                 list.append(temp_dict)
+        while len(list) > 10:
+            list.pop()
         with open('scoreB.json', mode='w', encoding='utf-8') as fp:
             json.dump(list, fp)
 
@@ -255,8 +262,8 @@ class Ui_Form(object):
     def saveScoreI(self):
         temp_dict = {}
         temp_dict['name'] = self.lineEdit.text()
-        temp_dict['time'] = self.scores['time']
-        temp_dict['3bv/s'] = self.scores['3bv/s']
+        temp_dict['time'] = self.scores['Time']
+        temp_dict['3bv/s'] = self.scores['3BV/s']
         list = []
         with open('scoreI.json', mode='r', encoding='utf-8') as fp:
             list = json.load(fp)
@@ -274,16 +281,18 @@ class Ui_Form(object):
                     break
             if flag1 and flag <= 9:
                 list.append(temp_dict)
+        while len(list) > 10:
+            list.pop()
         with open('scoreI.json', mode='w', encoding='utf-8') as fp:
             json.dump(list, fp)
 
     def saveScoreE(self):
         temp_dict = {}
         temp_dict['name'] = self.lineEdit.text()
-        temp_dict['time'] = self.scores['time']
-        temp_dict['3bv/s'] = self.scores['3bv/s']
+        temp_dict['time'] = self.scores['Time']
+        temp_dict['3bv/s'] = self.scores['3BV/s']
         list = []
-        with open('scoreB.json', mode='r', encoding='utf-8') as fp:
+        with open('scoreE.json', mode='r', encoding='utf-8') as fp:
             list = json.load(fp)
         if list == []:
             list.append(temp_dict)
@@ -299,16 +308,18 @@ class Ui_Form(object):
                     break
             if flag1 and flag <= 9:
                 list.append(temp_dict)
-        with open('scoreB.json', mode='w', encoding='utf-8') as fp:
+        while len(list) > 10:
+            list.pop()
+        with open('scoreE.json', mode='w', encoding='utf-8') as fp:
             json.dump(list, fp)
 
     def saveScoreC(self):
         temp_dict = {}
         temp_dict['name'] = self.lineEdit.text()
-        temp_dict['time'] = self.scores['time']
-        temp_dict['3bv/s'] = self.scores['3bv/s']
+        temp_dict['time'] = self.scores['Time']
+        temp_dict['3bv/s'] = self.scores['3BV/s']
         list = []
-        with open('scoreB.json', mode='r', encoding='utf-8') as fp:
+        with open('scoreC.json', mode='r', encoding='utf-8') as fp:
             list = json.load(fp)
         if list == []:
             list.append(temp_dict)
@@ -324,5 +335,15 @@ class Ui_Form(object):
                     break
             if flag1 and flag <= 9:
                 list.append(temp_dict)
+        while len(list) > 10:
+            list.pop()
         with open('scoreC.json', mode='w', encoding='utf-8') as fp:
             json.dump(list, fp)
+
+    def action_QEvent(self, flag):
+        # 本地战绩
+        ui = gameRank.Ui_MainWindow()
+        ui.tabWidget.setCurrentIndex(flag)
+        ui.Dialog.setModal(True)
+        ui.Dialog.show()
+        ui.Dialog.exec_()

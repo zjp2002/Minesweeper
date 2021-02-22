@@ -139,7 +139,6 @@ class Ui_Form(object):
         self.lineEdit.setFont(font)
         self.lineEdit.setMaxLength(8)
         self.lineEdit.setObjectName("lineEdit")
-        self.lineEdit.setMaxLength(8)
         self.horizontalLayoutWidget = QtWidgets.QWidget(Form)
         self.horizontalLayoutWidget.setGeometry(QtCore.QRect(19, 359, 461, 81))
         self.horizontalLayoutWidget.setObjectName("horizontalLayoutWidget")
@@ -254,6 +253,8 @@ class Ui_Form(object):
                     break
             if flag1 and flag <= 9:
                 list.append(temp_dict)
+        while len(list) > 10:
+            list.pop()
         with open('scoreB.json', mode='w', encoding='utf-8') as fp:
             json.dump(list, fp)
 
@@ -280,6 +281,8 @@ class Ui_Form(object):
                     break
             if flag1 and flag <= 9:
                 list.append(temp_dict)
+        while len(list) > 10:
+            list.pop()
         with open('scoreI.json', mode='w', encoding='utf-8') as fp:
             json.dump(list, fp)
 
@@ -305,6 +308,8 @@ class Ui_Form(object):
                     break
             if flag1 and flag <= 9:
                 list.append(temp_dict)
+        while len(list) > 10:
+            list.pop()
         with open('scoreE.json', mode='w', encoding='utf-8') as fp:
             json.dump(list, fp)
 
@@ -330,6 +335,8 @@ class Ui_Form(object):
                     break
             if flag1 and flag <= 9:
                 list.append(temp_dict)
+        while len(list) > 10:
+            list.pop()
         with open('scoreC.json', mode='w', encoding='utf-8') as fp:
             json.dump(list, fp)
 

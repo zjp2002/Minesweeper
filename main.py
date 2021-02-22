@@ -1,5 +1,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 import sys
+
+import gameEntrance
 import mainWindowGUI
 import mineSweeperGUI
 
@@ -7,6 +9,10 @@ import mineSweeperGUI
 if __name__ == "__main__":
     app = QtWidgets.QApplication (sys.argv)
     # app.aboutToQuit.connect(app.deleteLater)
+    ui = gameEntrance.Ui_Form()
+    ui.Dialog.setModal(True)
+    ui.Dialog.show()
+    ui.Dialog.exec_()
     mainWindow = mainWindowGUI.MainWindow ()
     ui = mineSweeperGUI.MineSweeperGUI (mainWindow)
     mainWindow.show()

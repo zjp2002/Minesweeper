@@ -233,7 +233,10 @@ class Ui_Form(object):
 
         '''
         temp_dict = {}
-        temp_dict['name'] = self.lineEdit.text()
+        if self.lineEdit.text():
+            temp_dict['name'] = self.lineEdit.text()
+        else:
+            temp_dict['name'] = "(^_^)"
         temp_dict['time'] = self.scores['Time']
         temp_dict['3bv/s'] = self.scores['3BV/s']
         list=[]
@@ -261,7 +264,10 @@ class Ui_Form(object):
 
     def saveScoreI(self):
         temp_dict = {}
-        temp_dict['name'] = self.lineEdit.text()
+        if self.lineEdit.text():
+            temp_dict['name'] = self.lineEdit.text()
+        else:
+            temp_dict['name'] = "(^_^)"
         temp_dict['time'] = self.scores['Time']
         temp_dict['3bv/s'] = self.scores['3BV/s']
         list = []
@@ -288,7 +294,10 @@ class Ui_Form(object):
 
     def saveScoreE(self):
         temp_dict = {}
-        temp_dict['name'] = self.lineEdit.text()
+        if self.lineEdit.text():
+            temp_dict['name'] = self.lineEdit.text()
+        else:
+            temp_dict['name'] = "(^_^)"
         temp_dict['time'] = self.scores['Time']
         temp_dict['3bv/s'] = self.scores['3BV/s']
         list = []
@@ -315,7 +324,10 @@ class Ui_Form(object):
 
     def saveScoreC(self):
         temp_dict = {}
-        temp_dict['name'] = self.lineEdit.text()
+        if self.lineEdit.text():
+            temp_dict['name'] = self.lineEdit.text()
+        else:
+            temp_dict['name'] = "(^_^)"
         temp_dict['time'] = self.scores['Time']
         temp_dict['3bv/s'] = self.scores['3BV/s']
         list = []

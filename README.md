@@ -48,7 +48,7 @@ Black Cat Minesweeper v2.0, which integrates three major internal mine detection
 
 链接：[https://wws.lanzous.com/ibdPhjnt91g](https://wws.lanzous.com/ibdPhjnt91g)
 
-## 最终完善修改版v3.0
+## 最终完善修改版v3.0：
 
 此版本由初学者团队合作修改而成，修复若干bug， 修改并增添了部分界面，删改了部分功能，美化了界面设计，并增添了成绩的录入与排行（主界面可以查看本机排行榜）
 

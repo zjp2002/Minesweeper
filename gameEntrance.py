@@ -11,24 +11,79 @@ import gameRank
 import configparser
 
 
+global flag
+flag = False
+
+
 class Ui_Form(object):
     def __init__(self):
         self.Dialog = QtWidgets.QDialog()
         self.setupUi(self.Dialog)
         self.Dialog.setWindowIcon(QtGui.QIcon("media/cat.ico"))
+        config = configparser.ConfigParser()
+        # 找不到配置文件就初始化
+        if not config.read('gameSetting.ini'):
+            self.min3BV = 2
+            self.max3BV = 54
+            self.timesLimit = 1000
+            self.enuLimit = 30
+            self.gameMode = 0
+            self.transparency = 1
+            self.pixSize = 30
+            self.mainWinTop = 100
+            self.mainWinLeft = 200
+            self.row = 8
+            self.column = 8
+            self.mineNum = 10
+            config["DEFAULT"] = {'timesLimit': 1000,
+                                 'enuLimit': 30,
+                                 'gameMode': 0,
+                                 'transparency': 100,
+                                 'pixSize': 30,
+                                 'mainWinTop': 100,
+                                 'mainWinLeft': 200,
+                                 'gameDifficult': 'B'
+                                 }
+            config["BEGINNER"] = {'min3BV': 2,
+                                  'max3BV': 54,
+                                  }
+            config["INTERMEDIATE"] = {'min3BV': 30,
+                                      'max3BV': 216,
+                                      }
+            config["EXPERT"] = {'min3BV': 100,
+                                'max3BV': 381,
+                                }
+            config["CUSTOM"] = {'x': 8,
+                                'y': 8,
+                                'n': 10,
+                                'min3BV': 2,
+                                'max3BV': 54,
+                                }
+            '''
+            config["BROWSER"] = {'URL1':"http://saolei.wang/Main/Index.asp",
+                                'URL2':"http://www.minesweeper.info/worldranking.html",
+                                'URL3':"https://cn.bing.com/?mkt=zh-CN",
+                                'gain1':1.0,
+                                'gain2':1.0,
+                                'gain3':1.0,
+                                 }
+            '''
+            with open('gameSetting.ini', 'w') as configfile:
+                config.write(configfile)  # 将对象写入文件
 
     def setupUi(self, Form):
         Form.setObjectName("Form")
         Form.resize(561, 572)
+        Form.setFixedSize(561, 572)
         self.label = QtWidgets.QLabel(Form)
         self.label.setGeometry(QtCore.QRect(0, 0, 571, 581))
         self.label.setText("")
-        self.label.setPixmap(QtGui.QPixmap("blue.jpg"))
+        self.label.setPixmap(QtGui.QPixmap("media/blue.jpg"))
         self.label.setObjectName("label")
         self.label_2 = QtWidgets.QLabel(Form)
         self.label_2.setGeometry(QtCore.QRect(110, 0, 371, 121))
         self.label_2.setText("")
-        self.label_2.setPixmap(QtGui.QPixmap("minesweeper.png"))
+        self.label_2.setPixmap(QtGui.QPixmap("media/minesweeper.png"))
         self.label_2.setObjectName("label_2")
         self.horizontalLayoutWidget_3 = QtWidgets.QWidget(Form)
         self.horizontalLayoutWidget_3.setGeometry(QtCore.QRect(100, 350, 361, 71))
@@ -123,14 +178,14 @@ class Ui_Form(object):
 
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
-        Form.setWindowTitle(_translate("Form", "Form"))
+        Form.setWindowTitle(_translate("Form", "扫雷"))
         self.pushButton_1.setText(_translate("Form", "    高级    "))
         self.pushButton_2.setText(_translate("Form", "    中级    "))
         self.pushButton_3.setText(_translate("Form", "    初级    "))
         self.pushButton_4.setText(_translate("Form", "   排行榜   "))
 
     def openRank(self):
-        ui = gameRank.Ui_Form()
+        ui = gameRank.Ui_MainWindow()
         ui.Dialog.setModal(True)
         ui.Dialog.show()
         ui.Dialog.exec_()
@@ -140,15 +195,26 @@ class Ui_Form(object):
         conf.read("gameSetting.ini")
         conf.set('DEFAULT', 'gamedifficult', 'E')
         conf.write(open('gameSetting.ini', 'r+', encoding="utf-8"))
+        global flag
+        flag = True
 
     def zhong_ji(self, Form):
         conf = configparser.ConfigParser()
         conf.read("gameSetting.ini")
         conf.set('DEFAULT', 'gamedifficult', 'I')
         conf.write(open('gameSetting.ini', 'r+', encoding="utf-8"))
+        global flag
+        flag = True
 
     def chu_ji(self, Form):
         conf = configparser.ConfigParser()
         conf.read("gameSetting.ini")
         conf.set('DEFAULT', 'gamedifficult', 'B')
         conf.write(open('gameSetting.ini', 'r+', encoding="utf-8"))
+        global flag
+        flag = True
+
+
+def Flag():
+    global flag
+    return flag

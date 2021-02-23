@@ -15,6 +15,7 @@ class Ui_MainWindow(object):
     def __init__(self):
         self.Dialog = QtWidgets.QDialog()
         self.setupUi(self.Dialog)
+        self.Dialog.setWindowIcon(QtGui.QIcon("media/cat.ico"))
         self.loadRank()
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")

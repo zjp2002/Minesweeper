@@ -12,7 +12,7 @@ class Ui_Form(object):
     def __init__(self):
         self.Dialog = QtWidgets.QDialog()
         self.setupUi(self.Dialog)
-        # self.Dialog.setWindowIcon (QtGui.QIcon ("media/cat.ico"))
+        self.Dialog.setWindowIcon (QtGui.QIcon ("media/cat.ico"))
         self.pushButton_2.clicked.connect (self.processParameter)
     def setupUi(self, Form):
         Form.setObjectName("Form")

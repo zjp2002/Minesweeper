@@ -7,20 +7,21 @@ import mineSweeperGUI
 
 # import sweeper
 if __name__ == "__main__":
-    app = QtWidgets.QApplication (sys.argv)
+    app = QtWidgets.QApplication(sys.argv)
     # app.aboutToQuit.connect(app.deleteLater)
     ui = gameEntrance.Ui_Form()
     ui.Dialog.setModal(True)
     ui.Dialog.show()
     ui.Dialog.exec_()
-    mainWindow = mainWindowGUI.MainWindow ()
-    ui = mineSweeperGUI.MineSweeperGUI (mainWindow)
-    mainWindow.show()
-    sys.exit (app.exec_())
+    if gameEntrance.Flag():
+        mainWindow = mainWindowGUI.MainWindow()
+        ui = mineSweeperGUI.MineSweeperGUI(mainWindow)
+        mainWindow.show()
+        sys.exit(app.exec_())
+    else:
+        exit()
 
-
-
-#bug:
+# bug:
 #    自定义模式的鲁棒性
 #    生成无猜局面时增加一种鲁棒的“快速模式”
 #    生成极端bv局面时采用鲁棒的“快速模式”，仅对标准模式有效？
@@ -34,8 +35,3 @@ if __name__ == "__main__":
 #    更快的枚举算法
 #    浏览器打包后会崩溃（按4、5、6键会崩）（还没想好怎么改）
 #    改级别时会闪（还没想好怎么改）
-
-
-
-
-

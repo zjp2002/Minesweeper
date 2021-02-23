@@ -759,10 +759,10 @@ class MineSweeperGUI(superGUI.Ui_MainWindow):
         ui.Dialog.show()
         ui.Dialog.exec_()
         if ui.alter:
-            self.min3BV = ui.min3BV
-            self.max3BV = ui.max3BV
-            self.timesLimit = ui.timesLimit
-            self.enuLimit = ui.enuLimit
+            #self.min3BV = ui.min3BV
+            #self.max3BV = ui.max3BV
+            #self.timesLimit = ui.timesLimit
+            #self.enuLimit = ui.enuLimit
             self.gameMode = ui.gameMode
             self.transparency = ui.transparency / 100
             self.pixSize = ui.pixSize

@@ -9,7 +9,8 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 import gameRank
 import configparser
-
+import os
+import json
 
 global flag
 flag = False
@@ -21,7 +22,67 @@ class Ui_Form(object):
         self.setupUi(self.Dialog)
         self.Dialog.setWindowIcon(QtGui.QIcon("media/cat.ico"))
         config = configparser.ConfigParser()
-        # 找不到配置文件就初始化
+
+        file = "scoreB.json"
+        if  os.path.exists(file) :
+            sz = os.path.getsize(file)
+            if not sz:
+                self.Flag=False
+            else:
+                self.Flag = True
+        else:
+            self.Flag = False
+
+        if not self.Flag:
+            list=[]
+            with open('scoreB.json', mode='w', encoding='utf-8') as fp:
+                json.dump(list, fp)
+
+        file = "scoreC.json"
+        if os.path.exists(file):
+            sz = os.path.getsize(file)
+            if not sz:
+                self.Flag = False
+            else:
+                self.Flag = True
+        else:
+            self.Flag = False
+
+        if not self.Flag:
+            list = []
+            with open('scoreC.json', mode='w', encoding='utf-8') as fp:
+                json.dump(list, fp)
+
+        file = "scoreE.json"
+        if os.path.exists(file):
+            sz = os.path.getsize(file)
+            if not sz:
+                self.Flag = False
+            else:
+                self.Flag = True
+        else:
+            self.Flag = False
+
+        if not self.Flag:
+            list = []
+            with open('scoreE.json', mode='w', encoding='utf-8') as fp:
+                json.dump(list, fp)
+
+        file = "scoreI.json"
+        if os.path.exists(file):
+            sz = os.path.getsize(file)
+            if not sz:
+                self.Flag = False
+            else:
+                self.Flag = True
+        else:
+            self.Flag = False
+
+        if not self.Flag:
+            list = []
+            with open('scoreI.json', mode='w', encoding='utf-8') as fp:
+                json.dump(list, fp)
+
         if not config.read('gameSetting.ini'):
             self.min3BV = 2
             self.max3BV = 54

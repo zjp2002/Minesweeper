@@ -296,7 +296,7 @@ class Ui_MainWindow(object):
         self.menu_3.addAction(self.actiongaun_yv)
         self.menu_4.addAction(self.actionbdzj)
         self.menubar.addAction(self.menu.menuAction())
-       #self.menubar.addAction(self.menu_2.menuAction())
+        #self.menubar.addAction(self.menu_2.menuAction())
         self.menubar.addAction(self.menu_4.menuAction())
         self.menubar.addAction(self.menu_3.menuAction())
 
@@ -308,7 +308,6 @@ class Ui_MainWindow(object):
         #self.frameShortcut7 = QtWidgets.QShortcut(QtGui.QKeySequence(QtCore.Qt.Key_6), MainWindow)
         self.frameShortcut4 = QtWidgets.QShortcut(QtGui.QKeySequence(QtCore.Qt.Key_F2), MainWindow)
         #self.frameShortcut8 = QtWidgets.QShortcut(QtGui.QKeySequence(QtCore.Qt.Key_Space), MainWindow)
-        self.frameShortcut9 = QtWidgets.QShortcut(QtGui.QKeySequence(QtCore.Qt.Key_Q), MainWindow)
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)

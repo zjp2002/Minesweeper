@@ -21,9 +21,10 @@ class Ui_Form(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
         Form.resize(671, 423)
+        Form.setFixedSize(671, 423)
         Form.setMouseTracking(True)
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("C:/Users/11762/.designer/backup/media/cat.ico"), QtGui.QIcon.Normal,
+        icon.addPixmap(QtGui.QPixmap("media/cat.ico"), QtGui.QIcon.Normal,
                        QtGui.QIcon.Off)
         Form.setWindowIcon(icon)
         self.pushButton = QtWidgets.QPushButton(Form)

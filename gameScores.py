@@ -9,6 +9,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 import json
 import gameRank
+import gameRecord
 
 class Ui_Form(object):
     def __init__(self, scores):
@@ -242,10 +243,10 @@ class Ui_Form(object):
         list=[]
         with open('scoreB.json', mode='r', encoding='utf-8') as fp:
             list = json.load(fp)
+        flag=0
         if list == []:
             list.append(temp_dict)
         else:
-            flag = 0
             flag1 = True
             for data in list:
                 if temp_dict['time'] >= data['time']:
@@ -256,6 +257,11 @@ class Ui_Form(object):
                     break
             if flag1 and flag <= 9:
                 list.append(temp_dict)
+        if flag == 0:
+            ui = gameRecord.Ui_Form()
+            ui.Dialog.setModal(True)
+            ui.Dialog.show()
+            ui.Dialog.exec_()
         while len(list) > 10:
             list.pop()
         with open('scoreB.json', mode='w', encoding='utf-8') as fp:
@@ -273,10 +279,10 @@ class Ui_Form(object):
         list = []
         with open('scoreI.json', mode='r', encoding='utf-8') as fp:
             list = json.load(fp)
+        flag = 0
         if list == []:
             list.append(temp_dict)
         else:
-            flag = 0
             flag1 = True
             for data in list:
                 if temp_dict['time'] >= data['time']:
@@ -287,6 +293,11 @@ class Ui_Form(object):
                     break
             if flag1 and flag <= 9:
                 list.append(temp_dict)
+        if flag == 0:
+            ui = gameRecord.Ui_Form()
+            ui.Dialog.setModal(True)
+            ui.Dialog.show()
+            ui.Dialog.exec_()
         while len(list) > 10:
             list.pop()
         with open('scoreI.json', mode='w', encoding='utf-8') as fp:
@@ -303,10 +314,10 @@ class Ui_Form(object):
         list = []
         with open('scoreE.json', mode='r', encoding='utf-8') as fp:
             list = json.load(fp)
+        flag = 0
         if list == []:
             list.append(temp_dict)
         else:
-            flag = 0
             flag1 = True
             for data in list:
                 if temp_dict['time'] >= data['time']:
@@ -317,6 +328,11 @@ class Ui_Form(object):
                     break
             if flag1 and flag <= 9:
                 list.append(temp_dict)
+        if flag == 0:
+            ui = gameRecord.Ui_Form()
+            ui.Dialog.setModal(True)
+            ui.Dialog.show()
+            ui.Dialog.exec_()
         while len(list) > 10:
             list.pop()
         with open('scoreE.json', mode='w', encoding='utf-8') as fp:
@@ -333,10 +349,10 @@ class Ui_Form(object):
         list = []
         with open('scoreC.json', mode='r', encoding='utf-8') as fp:
             list = json.load(fp)
+        flag = 0
         if list == []:
             list.append(temp_dict)
         else:
-            flag = 0
             flag1 = True
             for data in list:
                 if temp_dict['3bv/s'] <= data['3bv/s']:
@@ -347,6 +363,11 @@ class Ui_Form(object):
                     break
             if flag1 and flag <= 9:
                 list.append(temp_dict)
+        if flag == 0:
+            ui = gameRecord.Ui_Form()
+            ui.Dialog.setModal(True)
+            ui.Dialog.show()
+            ui.Dialog.exec_()
         while len(list) > 10:
             list.pop()
         with open('scoreC.json', mode='w', encoding='utf-8') as fp:

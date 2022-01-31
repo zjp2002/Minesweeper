@@ -20,8 +20,6 @@ Black Cat Minesweeper v2.0, which integrates three major internal mine detection
 
 ③[FairMinesweeper](https://github.com/xseryda/FairMinesweeper/)
 
-与同类项目相比，本项目更优秀。
-
 ## 正式版v2.0：
 
 修复若干bug，增加至8种无猜扫雷模式，详细规则还没写好
